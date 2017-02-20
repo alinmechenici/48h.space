@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Pure CSS Space Shuttle</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  background: #283d48;
+}
+
+.rocket {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -100px;
+}
+
+.external-tank {
+  width: 30px;
+  height: 100px;
+  background: #d49459;
+  position: absolute;
+  border-radius: 15px 15px 0 0;
+  box-shadow: inset 5px 5px 0 #b17e4d;
+  z-index: 4;
+}
+.external-tank:before {
+  content: '';
+  border: 15px solid transparent;
+  border-top: 15px solid #d49459;
+  position: absolute;
+  bottom: -30px;
+}
+.external-tank:after {
+  content: '';
+  border: 15px solid transparent;
+  border-bottom: 15px solid #898a88;
+  position: absolute;
+  bottom: -20px;
+}
+.external-tank .rocket-booster {
+  width: 8px;
+  height: 100px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  z-index: 2;
+  margin-left: -4px;
+  -webkit-filter: drop-shadow(#cfcece -2px 0 0);
+}
+.external-tank .rocket-booster:before {
+  content: '';
+  border: 4px solid transparent;
+  border-bottom: 8px solid #ffffff;
+  position: absolute;
+  top: -12px;
+  left: 0px;
+}
+.external-tank .rocket-booster:after {
+  content: '';
+  border: 8px solid transparent;
+  border-bottom: 12px solid #ffffff;
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+}
+
+.shuttle {
+  width: 25px;
+  height: 90px;
+  background: #fff;
+  position: absolute;
+  left: 32px;
+  top: 15px;
+  border-radius: 3px 50px 0 0;
+  -webkit-filter: drop-shadow(black 0 0 2px);
+  box-shadow: inset 3px 0 1px rgba(0, 0, 0, 0.2), inset 1px 0 0 black;
+  z-index: 2;
+}
+.shuttle:before {
+  content: '';
+  width: 10px;
+  height: 30px;
+  border-radius: 0 0 80% 3px;
+  background: #fff;
+  position: absolute;
+  bottom: -8px;
+  right: -10px;
+  transform: rotate(-45deg);
+}
+.shuttle:after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: rgba(50, 50, 50, 0.1);
+  position: absolute;
+  left: 5px;
+  top: 50%;
+}
+.shuttle .window {
+  width: 8px;
+  height: 30px;
+  background: #000;
+  position: absolute;
+}
+.shuttle .window:before {
+  content: '';
+  width: 5px;
+  height: 10px;
+  background: #000;
+  position: absolute;
+  transform: rotate(10deg);
+  border-radius: 2px 8px 0 0;
+  left: 14px;
+  top: 5px;
+}
+
+.thrusters {
+  position: absolute;
+  top: 46%;
+  left: 30px;
+  border: 8px solid transparent;
+  border-bottom: 15px solid #9d9e9d;
+  z-index: -1;
+}
+.thrusters:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 5px;
+  border: 8px solid transparent;
+  border-bottom: 15px solid #9d9e9d;
+}
+.thrusters:after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -5px;
+  border: 11px solid transparent;
+  border-bottom: 20px solid #8c8d8b;
+}
+
+.flames {
+  width: 44px;
+  height: 120px;
+  background: #ce7e3d;
+  position: absolute;
+  top: 116px;
+  left: -6px;
+  border-radius: 60% 60% 100% 100%;
+  z-index: -1;
+}
+.flames:before {
+  content: '';
+  width: 30px;
+  height: 110px;
+  position: absolute;
+  left: 10px;
+  background: #e0b144;
+  border-radius: 100%;
+}
+.flames:after {
+  content: '';
+  width: 25px;
+  height: 100px;
+  position: absolute;
+  left: 10px;
+  background: #f8e546;
+  border-radius: 100%;
+}
+
+.flames.right {
+  left: 23px;
+  top: 114px;
+  z-index: -4;
+  height: 150px;
+}
+.flames.right:before {
+  height: 140px;
+}
+.flames.right:after {
+  height: 130px;
+}
+
+.smoke {
+  position: absolute;
+  top: 132px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+}
+.smoke .s-1 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 22px;
+  height: 22px;
+  top: -4px;
+  left: -3px;
+  z-index: 2;
+}
+.smoke .s-2 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 18px;
+  height: 18px;
+  top: 4px;
+  left: -3px;
+  z-index: 2;
+}
+.smoke .s-3 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 22px;
+  height: 22px;
+  top: 8px;
+  left: -1px;
+  z-index: 2;
+}
+.smoke .s-4 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  left: -1px;
+  z-index: 2;
+}
+.smoke .s-5 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  left: -15px;
+  z-index: 2;
+}
+.smoke .s-6 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 50px;
+  height: 50px;
+  top: 35px;
+  left: -5px;
+  z-index: 2;
+}
+.smoke .s-7 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 50px;
+  height: 50px;
+  top: 35px;
+  left: -25px;
+  z-index: 2;
+}
+.smoke .s-8 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 80px;
+  height: 80px;
+  top: 65px;
+  left: -45px;
+  z-index: 2;
+}
+.smoke .s-9 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 90px;
+  height: 90px;
+  top: 65px;
+  left: 15px;
+  z-index: 2;
+}
+.smoke .s-10 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 150px;
+  height: 150px;
+  top: 95px;
+  left: -70px;
+  z-index: 2;
+}
+.smoke .s-11 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 180px;
+  height: 180px;
+  top: 130px;
+  left: -25px;
+  z-index: 2;
+}
+.smoke .s-12 {
+  border-radius: 50%;
+  position: absolute;
+  background: #adadac;
+  width: 50px;
+  height: 50px;
+  top: 35px;
+  left: -25px;
+  z-index: 2;
+}
+.smoke .s-13 {
+  border-radius: 50%;
+  position: absolute;
+  background: #878887;
+  width: 110px;
+  height: 110px;
+  top: 105px;
+  left: 50px;
+  z-index: 1;
+}
+.smoke .s-14 {
+  border-radius: 50%;
+  position: absolute;
+  background: #878887;
+  width: 160px;
+  height: 160px;
+  top: 140px;
+  left: 60px;
+  z-index: 1;
+}
+.smoke .s-15 {
+  border-radius: 50%;
+  position: absolute;
+  background: #878887;
+  width: 90px;
+  height: 90px;
+  top: 95px;
+  left: -85px;
+  z-index: 1;
+}
+.smoke .s-16 {
+  border-radius: 50%;
+  position: absolute;
+  background: #878887;
+  width: 50px;
+  height: 50px;
+  top: 155px;
+  left: 180px;
+  z-index: 1;
+}
+.smoke .s-17 {
+  border-radius: 50%;
+  position: absolute;
+  background: #878887;
+  width: 50px;
+  height: 50px;
+  top: 175px;
+  left: 195px;
+  z-index: 1;
+}
+.smoke .s-18 {
+  border-radius: 50%;
+  position: absolute;
+  background: #878887;
+  width: 110px;
+  height: 110px;
+  top: 125px;
+  left: -105px;
+  z-index: 1;
+}
+.smoke .s-19 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 50px;
+  height: 50px;
+  top: 155px;
+  left: 0px;
+  z-index: 3;
+}
+.smoke .s-20 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 110px;
+  height: 110px;
+  top: 155px;
+  left: -80px;
+  z-index: 3;
+}
+.smoke .s-21 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 400px;
+  height: 400px;
+  top: 205px;
+  left: -330px;
+  z-index: 3;
+}
+.smoke .s-22 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 200px;
+  height: 200px;
+  top: 225px;
+  left: -130px;
+  z-index: 3;
+}
+.smoke .s-23 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 100px;
+  height: 100px;
+  top: 255px;
+  left: 60px;
+  z-index: 3;
+}
+.smoke .s-24 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 130px;
+  height: 130px;
+  top: 255px;
+  left: 120px;
+  z-index: 3;
+}
+.smoke .s-25 {
+  border-radius: 50%;
+  position: absolute;
+  background: #c3c4c3;
+  width: 140px;
+  height: 140px;
+  top: 215px;
+  left: 170px;
+  z-index: 3;
+}
+.smoke .s-26 {
+  border-radius: 50%;
+  position: absolute;
+  background: #efeeee;
+  width: 200px;
+  height: 200px;
+  top: 265px;
+  left: -130px;
+  z-index: 3;
+}
+.smoke .s-27 {
+  border-radius: 50%;
+  position: absolute;
+  background: #efeeee;
+  width: 100px;
+  height: 100px;
+  top: 305px;
+  left: 60px;
+  z-index: 3;
+}
+.smoke .s-28 {
+  border-radius: 50%;
+  position: absolute;
+  background: #efeeee;
+  width: 130px;
+  height: 130px;
+  top: 285px;
+  left: 100px;
+  z-index: 3;
+}
+.smoke .s-29 {
+  border-radius: 50%;
+  position: absolute;
+  background: #efeeee;
+  width: 200px;
+  height: 200px;
+  top: 265px;
+  left: 170px;
+  z-index: 3;
+}
+.smoke .s-30 {
+  border-radius: 50%;
+  position: absolute;
+  background: #efeeee;
+  width: 50px;
+  height: 50px;
+  top: 465px;
+  left: 100px;
+  z-index: 3;
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+  <div class="rocket">
+  <i class="external-tank">
+    <i class="rocket-booster"></i>
+  </i>
+  <i class="shuttle">
+    <i class="window"></i>
+  </i>
+  <i class="thrusters"></i>
+  <i class="flames"></i>
+  <i class="flames right"></i>
+  <i class="smoke">
+    <i class="s-1"></i>
+    <i class="s-2"></i>
+    <i class="s-3"></i>
+    <i class="s-4"></i>
+    <i class="s-5"></i>
+    <i class="s-6"></i>
+    <i class="s-7"></i>
+    <i class="s-8"></i>
+    <i class="s-9"></i>
+    <i class="s-10"></i>
+    <i class="s-11"></i>
+    <i class="s-12"></i>
+    <i class="s-13"></i>
+    <i class="s-14"></i>
+    <i class="s-15"></i>
+    <i class="s-16"></i>
+    <i class="s-17"></i>
+    <i class="s-18"></i>
+    <i class="s-19"></i>
+    <i class="s-20"></i>
+    <i class="s-21"></i>
+    <i class="s-22"></i>
+    <i class="s-23"></i>
+    <i class="s-24"></i>
+    <i class="s-25"></i>
+    <i class="s-26"></i>
+    <i class="s-27"></i>
+    <i class="s-28"></i>
+    <i class="s-29"></i>
+    <i class="s-30"></i>
+  </i>
+</div>
+  
+  
+</body>
+</html>
