@@ -1,8 +1,7 @@
- <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      body {
+/* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+/*       body {
   background: #283d48;
-}
+} */
 
 .vertical_rocket {
   width: 200px;
@@ -489,4 +488,4 @@
   z-index: 3;
 }
 
-    </style>
+    
