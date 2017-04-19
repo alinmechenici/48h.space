@@ -1,0 +1,191 @@
+$bgc: #415265;
+$rocket-point: 10;
+$rocket-radius: 10vmin;
+$rocket-pop-count: 20;
+$rocket-pop-duration: 3s;
+
+.space {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+
+  // ref: http://codepen.io/Rplus/pen/GopaVZ
+  &::before,
+  &::after {
+    $stars: ();
+    $max: 4;
+
+    @for $i from 0 to 50 {
+      $stars: $stars, random(100) * 1vw random(100) * 1vh 1px (random($max) - 1) * -.5px;
+    }
+
+    content: "";
+    position: absolute;
+    width: $max * 1px;
+    height: $max * 1px;
+    box-shadow: $stars;
+    border-radius: 1px;
+    color: #fff;
+    will-change: opacity, transform;
+
+    transform: translateX(100vw);
+
+    // be carefull performance
+    animation:
+      twinkling infinite 10s,
+      rolling infinite 15s linear;
+
+    @keyframes twinkling {
+      0%,
+      100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    @keyframes rolling {
+      to { transform: none; }
+    }
+  }
+
+  &::before {
+    left: -100vw;
+  }
+  
+  &:nth-of-type(2) {
+    &::before {
+      animation-duration: 19s, 23s;
+    }
+
+    &::after {
+      animation-duration: 11s, 13s;
+    }
+  }
+}
+
+.rocket {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 304px;
+  max-width: 30vmin;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("https://cloud.githubusercontent.com/assets/1808835/16202852/1d427da0-374a-11e6-9175-11a0933797df.png");
+  animation: rocket-swing ($rocket-point * 2s) linear infinite alternate;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 58%;
+  }
+
+  @keyframes rocket-swing {
+    @for $i from 0 through $rocket-point {
+      #{$i * 100 / $rocket-point}% {
+        // round-move
+        // transform: translate3d($rocket-radius * sin($i * 360deg / $rocket-point), $rocket-radius * cos($i * 360deg / $rocket-point), 0);
+
+        transform: translate3d($rocket-radius * sin(random($rocket-point) * 360deg / $rocket-point), $rocket-radius * cos(random($rocket-point) * 360deg / $rocket-point), 0);
+      }
+    }
+  }
+}
+
+.rocket-pop {
+  position: absolute;
+  top: calc(50% - .5em);
+  left: calc(-5% - .5em);
+  width: 1em;
+  height: 1em;
+  margin-left: -12%;
+  animation: rocket-pops $rocket-pop-duration ease-out infinite;
+  background-color: #ccc;
+  border-radius: 50%;
+
+  @for $i from 1 through $rocket-pop-count {
+    $rotate: (random(20) - 10) * 1deg;
+    $left: (random(30) + 5) * -1vw;
+
+    &:nth-of-type(#{$i}) {
+      opacity: (random(40) + 30) / 100;
+      font-size: (random(60) + 20) * .1vmin;
+      top: (random(30) + 20) * 1%;
+      left: $left;
+      animation-delay: random($rocket-pop-count) * $rocket-pop-duration / $rocket-pop-count * -1;
+      transform:
+        rotate($rotate)
+        translate3d(-$left, 0%, 0)
+        scale((15 - random(8)) / 10);
+    }
+  }
+
+  @keyframes rocket-pops {
+    to {
+      transform: none;
+      opacity: 0;
+    }
+  }
+}
+
+// reset
+
+body {
+  margin: 0;
+  background-color: $bgc;
+}
+
+.info {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .7;
+}
+
+.earth {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60vmin;
+  height: 50vmin;
+  background: url("https://cdn.rawgit.com/Rplus/77ff4ba84ef8dfd8feb22d5a2212c52a/raw/6e8cc006eee5035e51aa0d385846b59a2d9a995a/earth.svg") no-repeat 100% 100%;
+  background-size: contain;
+}
+
+.slogan {
+  position: absolute;
+  right: 100%;
+  bottom: 0;
+  white-space: pre;
+  text-align: center;
+  color: #fff;
+  font: 900 calc(4vw + (100vw - 40rem) / 100) sans-serif;
+  font-size: 5vw;
+  text-transform: capitalize;
+  text-shadow:
+    0 0 .05em rgba(#fff, .5),
+    .1em .1em .2em rgba(#000, .4),
+    0 0 .05em rgba(#000, .3);
+  transform: translate(40%, calc(-20vmin + 50%)) perspective(600px) rotateY(45deg) rotateX(15deg);
+  transition: transform .3s;
+
+  @media (max-width: 40rem) {
+    right: 0;
+    font-size: 8vmin;
+    transform: translate(calc(-50vw + 50%), calc(50% - 40vh));
+  }
+}
